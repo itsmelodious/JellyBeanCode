@@ -108,6 +108,7 @@ class NumJellyEstimator:
         We should check  edge cases, or cases with unusual or unexpected input.
         Rather than ending the program if there's an error, we could have the user
         send in new input after receiving the error message. This will save memory.
+        You could also use exceptions instead of asserts.
         """
 
         return int(n)
