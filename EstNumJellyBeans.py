@@ -32,8 +32,8 @@ class NumJellyEstimator:
 
         # Check that the value is between zero and one.
         if ((frac <= 0.0) or (frac >= 1.0)):
-            print "\nError: Fraction of land used for sugar must be between"\
-                  +" 0.0 and 1.0.\n"
+            print("\nError: Fraction of land used for sugar must be between"\
+                  +" 0.0 and 1.0.\n")
             sys.exit()
 
         # Store the fraction.
@@ -64,8 +64,8 @@ class NumJellyEstimator:
 
         # NE24: Add a test for value here
         if ((frac <= 0.0) or (frac >= 1.0)):
-            print "\nError: Fraction of people loving pink must be between"\
-                  +" 0.0 and 1.0.\n"
+            print ("\nError: Fraction of people loving pink must be between"\
+                  +" 0.0 and 1.0.\n")
             sys.exit()
 
         # Store the fraction.
@@ -86,8 +86,8 @@ class NumJellyEstimator:
         n = self.fracLand4Sugar * self.worldPop * self.scalingConst
         # If this value is zero, it means that some value didn't get set.
         if (n == 0.0):
-            print "\nError: fraction of land for sugar and world population"\
-                  +"must be set before computing estimate.\n"
+            print ("\nError: fraction of land for sugar and world population"\
+                  +"must be set before computing estimate.\n")
         return int(n)
 
 
@@ -98,9 +98,9 @@ class NumJellyEstimator:
             (1.0 - self.fracPplLovingPink)
         # If this value is zero, it means that some value didn't get set.
         if (n == 0.0):
-            print "\nError: fraction of land for sugar, world population, and"\
+            print("\nError: fraction of land for sugar, world population, and"\
                   +"fraction of people loving pink must be set before "\
-                  +"computing estimate.\n"
+                  +"computing estimate.\n")
 
         # NE24: What other checks might be useful? What is a better way to do this?
         """
@@ -111,3 +111,23 @@ class NumJellyEstimator:
         """
 
         return int(n)
+
+# Get a jelly bean estimator
+jelly = NumJellyEstimator()
+
+# Set the fraction of land being used for sugar, the world population,
+# and the fraction of the population that loves pink.
+land_frac = 0.7
+ppl = 'One million'
+pink_frac = 1
+jelly.set_land_frac_for_sugar(land_frac)
+jelly.set_world_pop(ppl)
+jelly.set_frac_ppl_loving_pink(pink_frac)
+
+# Get the estimate of the number of jelly beans in the world,
+# and report the result given the input.
+est = jelly.compute_Njelly_est()
+
+print("\nIt is estimated that when\n", land_frac*100, "percent\nof the land is"+\
+      " used for sugar and\n", pink_frac*100, "percent of", int(ppl), \
+      "people\nLOVE pink, then there are\n", est, "\nJelly Beans in the world.")
